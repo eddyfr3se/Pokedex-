@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
     <link rel="stylesheet" href="./style.css">
     <script defer src="./scripts/template.js"></script>
     <script defer src="./script.js"></script>
 </head>
+
 <body onload="init()">
+    <header class="glass-header">
+        <img src="./img/logo.png" id="header-logo" alt="Pokedex Logo">
+        <img src="./img/menu-3Balken-header.svg" id="header-menu" alt="Menu">
+    </header>
+    <main class="main-content">
+        <div id="pokedex"></div>
+        <div class="load-more-container">
+            <button id="load-more-btn" onclick="loadMorePokemon()">Mehr laden</button>
+        </div>
+    </main>
 
-    <h1>Mein Pokedex</h1>
-
-    <div id="pokedex"></div>
-    
 
 
 
 
 
-     <footer class="footer">
-        <p>&copy; 2026 Pokedex</p>
+    <footer class="glass-footer">
+        <p>&copy; Mein Pokedex Projekt</p>
     </footer>
 
 </body>
+
 </html>
