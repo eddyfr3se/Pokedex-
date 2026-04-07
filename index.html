@@ -12,9 +12,17 @@
 </head>
 
 <body onload="init()">
+
+    <div id="pokemon-overlay" class="d-none" onclick="closeDialog()">
+        <div id="dialog-content" onclick="event.stopPropagation()">
+
+        </div>
+    </div>
     <header class="glass-header">
-        <img src="./img/logo.png" id="header-logo" alt="Pokedex Logo">
-        <img src="./img/menu-3Balken-header.svg" id="header-menu" alt="Menu">
+        <div class="header-wrapper">
+            <img src="./img/logo1.png" id="header-logo" alt="Pokedex Logo">
+            <img src="./img/menu-3Balken-header.svg" id="header-menu" alt="Menu">
+        </div>
     </header>
     <main class="main-content">
         <div id="pokedex"></div>
