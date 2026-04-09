@@ -18,8 +18,6 @@ async function loadPokemonData(loadLimit, loadOffset) {
     // Lade-Button Feedback geben
     let btn = document.getElementById("load-more-btn");
     if (btn) btn.innerHTML = "Lade...";
-
-
     try {
         let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${loadLimit}&offset=${loadOffset}`); ///loadlimit erst 20 dann 10 wenn button geklickt wird load offset das er bescheid weiß wo er weiter macht
         let data = await response.json();
@@ -58,6 +56,7 @@ function renderPokedex() {
         html += getPokemonCardTemplate(i, pokemon.name, pokemon.sprites.front_default, typClass, pokemon.id, typesHtml); ///packt alles in mein body
     }
     container.innerHTML = html;
+    document.getElementById("search-error").classList.add("d-none");
     ///sprites .name . front default ist der pfad von meinem ersten pokemon und zeigt an was ausgegeben wird 
 
 }
@@ -109,11 +108,7 @@ function openDialog(i) {
     let statsHtml = getStatsHtml(pokemon);
 
     let artwork = pokemon.sprites.other['official-artwork'].front_default;   ////speichern den link in artwork
-
-
     document.getElementById('pokemon-overlay').classList.remove('d-none');
-
-
     let htmlForDialog = getDialogTemplate(pokemon.name, artwork, pokemon.id, typeClass, typesHtml, statsHtml);  ////schmeis mir alles in dialog content mit template
     document.getElementById('dialog-content').innerHTML = htmlForDialog;
 }
@@ -137,4 +132,37 @@ function prevPokemon(event) {
     currentDialogIndex--;
     if (currentDialogIndex < 0) currentDialogIndex = currentPokemonList.length - 1;
     openDialog(currentDialogIndex);
+}
+
+function checkSearchError(htmlString, isZuKurz) {
+    let errorBox = document.getElementById("search-error");
+
+    if (isZuKurz) {
+        errorBox.innerHTML = "3 letters...";
+        errorBox.classList.remove("d-none");
+    } else if (htmlString === "") {
+        errorBox.innerHTML = "Not Found";
+        errorBox.classList.remove("d-none");
+    } else {
+        errorBox.classList.add("d-none");
+    }
+}
+
+function searchPokemon() {
+    let search = document.getElementById("search-input").value.toLowerCase();
+    if (search.length > 0 && search.length < 3) {  ///checkt ob wirklich mindestens 3 drin sind sonst abbruch 
+        checkSearchError("", true);
+        return;
+    }
+    let html = "";
+    for (let i = 0; i < currentPokemonList.length; i++) {
+        let pokemon = currentPokemonList[i];
+        if (pokemon.name.toLowerCase().includes(search)) {
+            let typClass = getPokemonClass(pokemon);
+            let typesHtml = getTypesHtml(pokemon);
+            html += getPokemonCardTemplate(i, pokemon.name, pokemon.sprites.front_default, typClass, pokemon.id, typesHtml);
+        }
+    }
+    document.getElementById("pokedex").innerHTML = html;
+    checkSearchError(html, false); ///checkt nochma alles ab 
 }

@@ -21,9 +21,15 @@
     <header class="glass-header">
         <div class="header-wrapper">
             <img src="./img/logo1.png" id="header-logo" alt="Pokedex Logo">
-            <img src="./img/menu-3Balken-header.svg" id="header-menu" alt="Menu">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search Pokémon...">
+                <button onclick="searchPokemon()" id="search-btn">Search</button>
+            </div>
         </div>
     </header>
+    <div id="search-error" class="d-none">
+        Not Found!
+    </div>
     <main class="main-content">
         <div id="pokedex"></div>
         <div class="load-more-container">
