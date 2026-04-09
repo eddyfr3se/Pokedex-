@@ -21,9 +21,6 @@ body {
 }
 
 
-/* 
-    HEADER + FOOTER
- */
 
 .glass-header,
 .glass-footer {
@@ -50,8 +47,8 @@ body {
 }
 
 #header-logo {
-    height: 140px;
-    width: 220px;
+    width: 250px;
+    height: auto;
 }
 
 .search-container {
@@ -95,7 +92,7 @@ body {
     font-weight: bold;
     padding: 30px 60px;
     border-radius: 20px;
-    border: 2px solid #dc0a2d;
+    border: 2px solid #ffffff;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
     z-index: 5000;
     pointer-events: none;
@@ -116,9 +113,6 @@ body {
 }
 
 
-/* 
-   BUTTONS ezt.
-  */
 
 .load-more-container {
     text-align: center;
@@ -147,9 +141,6 @@ body {
 }
 
 
-/* 
-   POKEDEX 
-*/
 
 #pokedex h2 {
     color: white;
@@ -169,9 +160,6 @@ body {
 }
 
 
-/* 
-   ///POKEMON CARDS FLEX
- */
 
 .pokemon-card {
     background: rgba(0, 0, 0, 0.7);
@@ -230,22 +218,19 @@ body {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgb(255 255 255 / 43%);
     padding: 6px;
     object-fit: contain;
 }
 
 .card-body img {
-    height: 100px;
-    width: 100px;
+    height: 112px;
+    width: 140px;
     object-fit: contain;
-    filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.9));
+    filter: drop-shadow(0 5px 8px rgba(255, 255, 255, 0.9));
 }
 
 
-/* 
-   BACKGROUND COLORS (POKEMON TYPEN)
-*/
 
 .bg-normal {
     background-color: #A8A77A;
@@ -320,9 +305,6 @@ body {
 }
 
 
-/* 
-   DIALOG / OVERLAY 
-   */
 
 #pokemon-overlay {
     position: fixed;
@@ -438,38 +420,47 @@ body {
 }
 
 
-/* 
-   RESPONSIVE (HANDY / TABLET)
-  */
-
-@media (max-width: 1420px) {
-    #pokedex {
-        gap: 15px;
-        padding: 10px;
+@media (max-width: 720px) {
+    .glass-header {
+        padding: 15px 10px;
     }
 
-    .pokemon-card {
-        width: 200px;
-        padding: 12px;
+    .header-wrapper {
+        flex-direction: column;
+        gap: 0px;
+        justify-content: center;
+        margin-top: -20px;
+
     }
 
-    .card-body img {
-        height: 100px;
-        width: 100px;
+    #header-logo {
+        width: 250px;
+        height: auto;
+        margin-top: -25px;
+        margin-bottom: -35px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    body {
+        background-color: #000;
     }
 
-    .card-header h2 {
-        font-size: 1rem;
+    .glass-footer {
+        padding: 15px 10px;
     }
 
-    .pokemon-card .type-icon {
-        width: 20px;
-        height: 20px;
+    .search-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
     }
 
-    .main-content {
-        background-size: contain;
-        background-position: center;
-        background-repeat: repeat;
+    #search-input,
+    #search-btn {
+        width: 80%;
+        box-sizing: border-box;
     }
 }

@@ -1,4 +1,3 @@
-// Hier kommen unsere HTML-Templates hin
 function getPokemonCardTemplate(pokemonIndex, pokemonName, pokemonImage, typeClass, pokemonId, typesHtml) {
     return `<div class="pokemon-card ${typeClass}" onclick="openDialog(${pokemonIndex})">
             <div class="card-header">
