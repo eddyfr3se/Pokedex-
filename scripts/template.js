@@ -1,19 +1,19 @@
-function getPokemonCardTemplate(pokemonIndex, pokemonName, pokemonImage, typeClass, pokemonId, typesHtml) {
-    return `<div class="pokemon-card ${typeClass}" onclick="openDialog(${pokemonIndex})">
+function getPokemonCardTemplate(i, pokemon, typeClass, typesHtml) {
+    return `<div class="pokemon-card ${typeClass}" onclick="openDialog(${i})">
             <div class="card-header">
-                <h2>${pokemonName}</h2>
-                <span class="pokemon-id">#${pokemonId}</span>
+                <h2>${pokemon.name}</h2>
+                <span class="pokemon-id">#${pokemon.id}</span>
             </div>
             <div class="card-body">
                 <div class="types-container">
                     ${typesHtml}
                 </div>
-                <img src="${pokemonImage}">
+                <img src="${pokemon.sprites.front_default}">
             </div>
         </div>`;
 }
 
-function getDialogTemplate(pokemonName, artwork, pokemonId, typeClass, typesHtml, statsHtml) {
+function getDialogTemplate(pokemon, artwork, typeClass, typesHtml, statsHtml) {
     return `
         <div class="dialog-card">
             <div class="dialog-top ${typeClass}">
@@ -25,7 +25,7 @@ function getDialogTemplate(pokemonName, artwork, pokemonId, typeClass, typesHtml
                 
                 <div class="dialog-nav">
                     <b class="nav-arrow" onclick="prevPokemon(event)"><</b>
-                    <h2>${pokemonName} <span class="text-grey">#${pokemonId}</span></h2>
+                    <h2>${pokemon.name} <span class="text-grey">#${pokemon.id}</span></h2>
                     <b class="nav-arrow" onclick="nextPokemon(event)">></b>
                 </div>
 

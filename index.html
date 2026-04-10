@@ -12,7 +12,9 @@
 </head>
 
 <body onload="init()">
-
+    <div id="loading-screen" class="d-none">
+        <img src="./img/ladebalken.png" alt="Loading...">
+    </div>
     <div id="pokemon-overlay" class="d-none" onclick="closeDialog()">
         <div id="dialog-content" onclick="event.stopPropagation()">
 
@@ -24,6 +26,7 @@
             <div class="search-container">
                 <input type="text" id="search-input" placeholder="Search Pokémon...">
                 <button onclick="searchPokemon()" id="search-btn">Search</button>
+                <button onclick="resetSearch()" id="reset-btn" class="d-none">Reset</button>
             </div>
         </div>
     </header>
@@ -33,7 +36,7 @@
     <main class="main-content">
         <div id="pokedex"></div>
         <div class="load-more-container">
-            <button id="load-more-btn" onclick="loadMorePokemon()">More Load</button>
+            <button id="load-more-btn" onclick="loadMorePokemon()">Load More</button>
         </div>
     </main>
 
@@ -43,7 +46,7 @@
 
 
     <footer class="glass-footer">
-        <p>&copy; Mein Pokedex Projekt</p>
+        <p>&copy; My Pokedex Projekt</p>
     </footer>
 
 </body>
